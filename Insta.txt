@@ -1,0 +1,16 @@
+Created Entity relation design 
+
+Created API for User 
+	-create User
+	-get User
+	-get all User
+	-delete User
+
+Created API for Post
+	-create Post
+	-get Post
+	-get All Post
+	-delete Post
+ 
+
+
