@@ -1,6 +1,6 @@
 package com.instagram.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,16 +16,15 @@ public class PostDto {
 
 	private String description;
 
-	private Integer total_likes;
+	private Long total_likes;
 
-  	@JsonIgnore
+	@JsonIgnore
 	private List<LikesDto> likes;
 
-	private Date createdDate;
+	private LocalDate createdDate;
 
 	private Long userId;
 
-	@JsonIgnore
 	private Set<Tags> tag = new HashSet<>();
 
 	public Long getId() {
@@ -52,11 +51,11 @@ public class PostDto {
 		this.description = description;
 	}
 
-	public Integer getTotal_likes() {
+	public Long getTotal_likes() {
 		return total_likes;
 	}
 
-	public void setTotal_likes(Integer total_likes) {
+	public void setTotal_likes(Long total_likes) {
 		this.total_likes = total_likes;
 	}
 
@@ -76,11 +75,11 @@ public class PostDto {
 		this.userId = userId;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 

@@ -8,4 +8,5 @@ import com.instagram.model.Likes;
 @Repository
 public interface LikesRepository extends JpaRepository<Likes , Long>{
 
+	public Long countByPostId(Long id);
 }

@@ -1,12 +1,10 @@
 package com.instagram.service.serviceImpl;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.instagram.dto.PostDto;
-import com.instagram.exception.PostNotFoundException;
 import com.instagram.exception.UserNotFoundException;
 import com.instagram.model.Post;
 import com.instagram.model.Tags;
@@ -35,7 +32,6 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	private UserRepository userRepository;
 
-	private Date date = new Date(Calendar.getInstance().getTime().getTime());
 
 	private void userExist(long id) {
 		if (!userRepository.existsById(id)) {
@@ -46,9 +42,10 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public PostDto addPost(PostDto postDto) {
 		userExist(postDto.getUserId());
+		var date = LocalDate.now();
 		Post post = modelMapper.map(postDto, Post.class);
 		post.setUser(userRepository.findById(postDto.getUserId()).get());
-		post.setCreatedDate( date);
+		post.setCreatedDate(date);
 		List<Tags> tags = new ArrayList<>();
 		postDto.getTag().stream().forEach(e -> {
 			Tags tag = new Tags();

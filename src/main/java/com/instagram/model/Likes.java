@@ -1,59 +1,57 @@
 package com.instagram.model;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
 
 @Entity
-public class Likes {
+@Table(name = "likes")
+@IdClass(Likes.class)
+public class Likes implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	private User user;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Post post;
+	@Column(name = "postId")
+	private Long postId;
+	@Id
+	@Column(name = "userId")
+	private Long userId;
 
 	public Likes() {
 		super();
 	}
 
-	public Likes(Long id, User user, Post post) {
+	public Likes(Long postId, Long userId) {
 		super();
-		this.id = id;
-		this.user = user;
-		this.post = post;
+		this.postId = postId;
+		this.userId = userId;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getPostId() {
+		return postId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPostId(Long postId) {
+		this.postId = postId;
 	}
 
-	public User getUser() {
-		return user;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public Post getPost() {
-		return post;
+	@Override
+	public String toString() {
+		return "Likes [postId=" + postId + ", userId=" + userId + "]";
 	}
-
-	public void setPost(Post post) {
-		this.post = post;
-	}
-
+	
 }

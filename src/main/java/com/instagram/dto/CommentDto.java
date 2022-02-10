@@ -1,17 +1,18 @@
 package com.instagram.dto;
 
-import com.instagram.model.Post;
-import com.instagram.model.User;
+import org.springframework.lang.NonNull;
 
 public class CommentDto {
 
 	private Long id;
-	
-	private String Comment;
-	
-	private User user;
 
-	private Post post;
+	private String comment;
+
+	@NonNull
+	private Long userId;
+
+	@NonNull
+	private Long postId;
 
 	public Long getId() {
 		return id;
@@ -22,28 +23,27 @@ public class CommentDto {
 	}
 
 	public String getComment() {
-		return Comment;
+		return comment;
 	}
 
 	public void setComment(String comment) {
-		Comment = comment;
+		this.comment = comment;
 	}
 
-	public User getUser() {
-		return user;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public Post getPost() {
-		return post;
+	public Long getPostId() {
+		return postId;
 	}
 
-	public void setPost(Post post) {
-		this.post = post;
+	public void setPostId(Long postId) {
+		this.postId = postId;
 	}
-	
-	
+
 }

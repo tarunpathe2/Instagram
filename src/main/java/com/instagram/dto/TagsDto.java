@@ -1,17 +1,15 @@
 package com.instagram.dto;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.instagram.model.Post;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class TagsDto {
 
 	private Long id;
-	
+
 	private String tag;
-	
-	private Set<Post> post = new HashSet<>();
+
+	@JsonIgnore
+	private Long Post;
 
 	public Long getId() {
 		return id;
@@ -29,13 +27,12 @@ public class TagsDto {
 		this.tag = tag;
 	}
 
-	public Set<Post> getPost() {
-		return post;
+	public Long getPost() {
+		return Post;
 	}
 
-	public void setPost(Set<Post> post) {
-		this.post = post;
+	public void setPost(Long post) {
+		Post = post;
 	}
-	
-	
+
 }
